@@ -7,9 +7,10 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./form-register.component.css']
 })
 export class FormRegisterComponent implements OnInit {
+  genero:any = [{value:'m',label:'masculino'},{value:'m',label:'masculino'}]
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(){
   }
 
 
