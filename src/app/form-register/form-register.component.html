@@ -2,7 +2,7 @@
     <label for="">Formulario de Registro</label>
     <small id="error"></small>
 </div>
-<form class="col-4">
+<form class="container-fluid">
     <div class="form-group">
         <label for="name">Nombre</label>
         <input type="text" class="form-control" id="name" placeholder="Ingresa tu Nombre">
@@ -33,23 +33,25 @@
         <input type="number" min="0" max="100" maxlength="3" step="1" class="form-control" id="age" placeholder="Ingresa tu edad">
     </div>
     <div class="form-group">
+        <label for="genere">Genero</label>
+        <select class="form-control" name="genere" id="genere">
+            <option *ngFor="let gen of genere" value="{{gen.value}}" >{{gen.label}} </option>
+        </select>
+    </div>
+    <div class="form-group">
         <label for="tshirt_size">Talla de playera</label>
         <select class="form-control" name="talla_playera" id="talla_playera">
-            <option name="default" value="0" selected>
-                Seleccione una talla    
-            </option>
+            <option *ngFor="let size of tshirt_size" value="{{size.value}}" >{{size.label}} </option>
         </select>
     </div>
     <div class="form-group">
         <label for="city">Procedencia</label>
         <select class="form-control" name="state" id="state">
-            <option name="default" value="NoState" selected>
-                Seleccione un estado    
-            </option>
-            </select>
+            <option *ngFor="let state of states" value="{{state.name}}">{{state.name}}</option>
+        </select>
         <select class="form-control" name="city" id="city">
-            <option name="default" value="NoCity" selected>
-                Seleccione una ciudad    
+            <option *ngFor="let city of states[0].municipios" value="{{city.name}}" selected>
+                {{city.name}}   
             </option>
             </select>
     </div>
