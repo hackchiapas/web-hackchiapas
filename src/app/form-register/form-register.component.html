@@ -2,7 +2,7 @@
     <label for="">Formulario de Registro</label>
     <small id="error"></small>
 </div>
-<form class="container-fluid">
+<form class="container-fluid" (submit)="send()">
     <div class="form-group">
         <label for="name">Nombre</label>
         <input type="text" class="form-control" id="name" placeholder="Ingresa tu Nombre">
@@ -44,16 +44,16 @@
             <option *ngFor="let size of tshirt_size" value="{{size.value}}" >{{size.label}} </option>
         </select>
     </div>
-    <div class="form-group">
+    <div class="form-group" id="procedencia">
         <label for="city">Procedencia</label>
-        <select class="form-control" name="state" id="state">
-            <option *ngFor="let state of states" value="{{state.name}}">{{state.name}}</option>
+        <select class="form-control" name="state" id="state" (change)="setState($event)">
+            <option *ngFor="let state of states" [value]="state.name">{{state.name}}</option>
+            <option value="default" selected>Seleccione un estado</option>
         </select>
-        <select class="form-control" name="city" id="city">
-            <option *ngFor="let city of states[0].municipios" value="{{city.name}}" selected>
-                {{city.name}}   
-            </option>
-            </select>
+        <select class="form-control" name="state" id="state">
+            <option *ngFor="let city of cities" [value]="city.name">{{city.name}}</option>
+            <option value="default" selected>Seleccione una ciudad</option>
+        </select>
     </div>
     <button type="submit" class="btn btn-primary">Enviar</button>
 </form>

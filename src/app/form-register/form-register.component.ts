@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
-  selector: 'app-form-register',
-  templateUrl: './form-register.component.html',
-  styleUrls: ['./form-register.component.css']
+    selector: 'app-form-register',
+    templateUrl: './form-register.component.html',
+    styleUrls: ['./form-register.component.css']
 })
 export class FormRegisterComponent implements OnInit {
-
-    states:any= [
-      {
+    states: any = [
+        {
             "name": "Aguascalientes",
             "municipios": [
                 { "name": "Aguascalientes" },
@@ -2622,19 +2621,30 @@ export class FormRegisterComponent implements OnInit {
             ]
         }
     ]
-  tshirt_size:any = [
-    {value:'xg',label:'Extra-Grande'},
-    {value:'g',label:'Grande'},
-    {value:'m',label:'Mediana'},
-    {value:'c',label:'Chica'},
-  ]
-  genere:any = [
-    {value:'M',label:'Masculino'},
-    {value:'F',label:'Femenino'}
-  ]
-  constructor() { }
+    tshirt_size: any = [
+        { value: 'xg', label: 'Extra-Grande' },
+        { value: 'g', label: 'Grande' },
+        { value: 'm', label: 'Mediana' },
+        { value: 'c', label: 'Chica' },
+    ]
+    genere: any = [
+        { value: 'M', label: 'Masculino' },
+        { value: 'F', label: 'Femenino' }
+    ]
+    CurrentState: number = 0;
+    options: string = '';
+    cities:Array<{name:string}>=[];
+    constructor() {
 
-  ngOnInit(){
-  }
+    }
+    setState(event:any)
+    {
+        this.cities=this.states[event.target.selectedIndex].municipios;
+    }
+    send= ()=>{
+
+    }
+    ngOnInit() {
+    }
 
 }
