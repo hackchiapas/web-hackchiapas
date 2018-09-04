@@ -1,11 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 @Component({
     selector: 'app-form-register',
     templateUrl: './form-register.component.html',
     styleUrls: ['./form-register.component.css']
 })
 export class FormRegisterComponent implements OnInit {
+    //Resgistro almacena la informacion de todo el formulario
+    registro:FormGroup;
+    constructor(private fb:FormBuilder) {
+        this.registro=this.fb.group({
+            //validaciones campo - tipo de validacion
+            name:['',Validators.required],
+            lastnameM:['',Validators.required],
+            lastnameP:['',Validators.required],
+            email:['',Validators.email],
+            phone:['',Validators.required],
+            school:['',Validators.required],
+            age:['',Validators.required],
+            genere:['',Validators.required],
+            tshirt_size:['',Validators.required],
+            state:['',Validators.required],
+            city:['',Validators.required]
+        });
+
+    }
+    // JSON con todos los estados y municipios de mexico
     states: any = [
         {
             "name": "Aguascalientes",
@@ -2621,7 +2642,9 @@ export class FormRegisterComponent implements OnInit {
             ]
         }
     ]
-    tshirt_size: any = [
+
+    //Variables utilizadas para crear los SELECT
+    tshirt_sizes: any = [
         { value: 'xg', label: 'Extra-Grande' },
         { value: 'g', label: 'Grande' },
         { value: 'm', label: 'Mediana' },
@@ -2630,21 +2653,123 @@ export class FormRegisterComponent implements OnInit {
     genere: any = [
         { value: 'M', label: 'Masculino' },
         { value: 'F', label: 'Femenino' }
-    ]
-    CurrentState: number = 0;
-    options: string = '';
-    cities:Array<{name:string}>=[];
-    constructor() {
+    ];
 
-    }
+    //CurrentState Identifica el estado actual para luego determinar que municipios mostrar
+    CurrentState: number = 0;
+    //cities Aloja las ciudades que se mostraran dinamicamente deacuerdo al estado
+    cities:any=[];
+
+    //Guarda la aleccion de estado y setea las ciudades que mostrara
     setState(event:any)
     {
         this.cities=this.states[event.target.selectedIndex].municipios;
     }
-    send= ()=>{
+
+    //muestra los errores
+    status:boolean=true;
+    err_name;err_am;err_ap;err_em;err_phone;err_ins;err_age;err_g;err_tsize;err_st;err_ci;
+    error_name(){
+        if (this.registro.value.name == "") {
+            this.err_name = 'Debe ingresar un nombre';
+        }
+        else
+        {
+            this.err_name = '';
+        }
+    }
+    error_capture=()=>{
+        
+        if (this.registro.value.lastnameM == "") {
+            this.err_am = 'Debe ingresar un apellido materno';
+            this.status=false;
+        }
+        if (this.registro.value.email=="") {
+            this.err_em = 'Debe ingresar tu email';
+            this.status=false;
+        }
+        if (this.registro.value.lastnameP == "") {
+            this.err_ap = 'Debe ingresar un apellido Paterno';
+            this.status=false;
+        }
+        if (this.registro.value.phone.length < 10) {
+            this.err_phone = 'Tu numero telefonico debe tener 10 digitos';
+            this.status=false;
+        }
+        if(this.registro.value.school=='')
+        {
+            this.err_ins='Debe ingresar su instituto';
+            this.status=false;
+        }
+        if(this.registro.value.age=="")
+        {
+            this.err_age='Debe seleccionar su edad';
+            this.status=false;
+        }
+        if(this.registro.value.genere=="")
+        {
+            this.err_g='Debe seleccionar su genero';
+            this.status=false;
+        }
+        if(this.registro.value.tshirt_size=="")
+        {
+            this.err_tsize='Debe seleccionar su talla';
+            this.status=false;
+        }
+        if(this.registro.value.state=="")
+        {
+            this.err_st='Debe seleccionar su estado\n';
+            this.status=false;
+        }
+        if(this.registro.value.city=="")
+        {
+            this.err_ci='Debe seleccionar su ciudad';
+            this.status=false;
+        }
+        if(this.registro.valid)
+        {
+            this.err_name="Presiona enviar";
+            this.err_am="Presiona enviar";
+            this.err_ap="Presiona enviar";
+            this.err_phone="Presiona enviar";
+            this.err_ins="Presiona enviar";
+            this.err_age="Presiona enviar";
+            this.err_g="Presiona enviar";
+            this.err_tsize="Presiona enviar";
+            this.err_st="Presiona enviar";
+            this.err_ci="Presiona enviar";
+            setTimeout(() => {
+                this.err_name="Presiona enviar";
+            this.err_am="";
+            this.err_ap="";
+            this.err_phone="";
+            this.err_ins="";
+            this.err_age="";
+            this.err_g="";
+            this.err_tsize="";
+            this.err_st="";
+            this.err_ci="";
+            }, 1500);
+        }   
+}
+
+    //genera las edades
+    range(begin:number,end:number)
+    {
+        let num:any=[];
+        for(let i=begin;i<=end;i++)
+        {
+            num.push(i);
+        }
+        return num;
 
     }
-    ngOnInit() {
+    save()
+    {
+        alert('guardado');
+    }
+    ngOnInit()
+    {
     }
 
 }

@@ -1,0 +1,406 @@
+/* ESTILOS DEL cOMPONENTE */
+
+.form {
+    background-image: url("https://hackchiapas.com/assets/images/banner.png");
+    color: #F3E600;
+    border-radius: 2%;
+}
+
+#form-title {
+    color: #FFFFFF;
+    font-size: 140%;
+    margin-left: 3%;
+}
+
+small {
+    color: #FFFFFF;
+}
+
+#info {
+    color: #F4817B;
+    font-size: 150%;
+}
+
+.submit-control {
+    margin-left: 10px;
+}
+
+.outline-btn {
+    display: inline-block;
+    padding: 10px 35px;
+    margin: 3px 0px 0px 80%;
+    border: 2px solid transparent;
+    border-radius: 3px;
+    -webkit-transition: 0.2s opacity;
+    transition: 0.2s opacity;
+    background: transparent;
+    color: #F0E730 !important;
+    border-color: #F0E730;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'futura-pt', sans-serif;
+    font-weight: 600;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    color: #F0E730;
+}
+
+h1 {
+    font-size: 54px;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+h3 {
+    font-size: 21px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+h5 {
+    font-size: 16px;
+}
+
+.accent-color {
+    color: rgb(46, 46, 45);
+}
+
+.accent1-color {
+    color: #F0E730;
+}
+
+.accent2-color {
+    color: #FFD05B;
+}
+
+.accent3-color {
+    color: #F4817B;
+}
+
+.text-white {
+    color: #FFF;
+    text-align: justify;
+}
+
+::-moz-selection {
+    background-color: #F0E730;
+    color: #FFF;
+}
+
+::selection {
+    background-color: #F0E730;
+    color: #FFF;
+}
+
+ul.no-decor,
+ol.no-decor {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+
+/* -- section  -- */
+
+.section {
+    position: relative;
+}
+
+.md-padding {
+    padding-top: 9vh;
+    padding-bottom: 9vh;
+}
+
+.sm-padding {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+
+/* --  background section  -- */
+
+.bg-grey {
+    background-color: #FAFAFA;
+    border-top: 1px solid #EEE;
+    border-bottom: 1px solid #EEE;
+}
+
+.bg-main {
+    background-color: #24283A;
+    border-top: 1px solid #24283A;
+    border-bottom: 1px solid #24283A;
+}
+
+.bg-faq {
+    background-color: #283238;
+    border-top: 1px solid #283238;
+    border-bottom: 1px solid #283238;
+}
+
+.bg-dark {
+    background-color: #1C1D21;
+}
+
+
+/* --  background image section  -- */
+
+.bg-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+/* --  section header  -- */
+
+.section-header {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.section-header .title {
+    text-transform: capitalize;
+}
+
+.title:after {
+    content: "";
+    display: block;
+    height: 4px;
+    width: 40px;
+    margin-top: 20px;
+}
+
+.text-center .title:after {
+    margin: 20px auto 0px;
+}
+
+
+/* --  Input  -- */
+
+select,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="url"],
+input[type="tel"],
+textarea {
+    height: 40px;
+    width: 100%;
+    border: none;
+    background: #F4F4F4;
+    background-color: #F4F4F4 !important;
+    border-bottom: 2px solid #EEE;
+    color: #354052;
+    padding: 0px 10px;
+    opacity: 0.5;
+    -webkit-transition: 0.2s border-color, 0.2s opacity;
+    transition: 0.2s border-color, 0.2s opacity;
+}
+
+textarea {
+    padding: 10px 10px;
+    min-height: 80px;
+    resize: vertical;
+}
+
+[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="url"]:focus,
+input[type="tel"]:focus,
+textarea:focus {
+    border-color: #F0E730;
+    opacity: 1;
+}
+
+#inputBirthDate::placeholder {
+    opacity: 0.6;
+}
+
+
+/* --  Buttons  -- */
+
+.main-btn,
+.white-btn,
+.outline-btn {
+    display: inline-block;
+    padding: 10px 35px;
+    margin: 3px;
+    border: 2px solid transparent;
+    border-radius: 3px;
+    -webkit-transition: 0.2s opacity;
+    transition: 0.2s opacity;
+}
+
+.main-btn {
+    background: #F0E730;
+    color: #FFF;
+}
+
+.white-btn {
+    background: #FFF;
+    color: #10161A !important;
+}
+
+.outline-btn {
+    background: transparent;
+    color: #F0E730 !important;
+    border-color: #F0E730;
+}
+
+.btn-send {
+    background: #57ef7f;
+    color: white !important;
+    letter-spacing: 2px;
+    border-radius: 3px;
+}
+
+.main-btn:hover,
+.white-btn:hover,
+.outline-btn:hover {
+    opacity: 0.8;
+}
+
+.logos-container {
+    padding: 0;
+    margin: 0 6.25% 0 6.25%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    justify-content: center;
+    list-style: none;
+}
+
+.logo-item {
+    padding: 5px;
+    width: 200px;
+    height: 120px;
+    margin-top: 10px;
+    line-height: 150px;
+    text-align: center;
+}
+
+select,
+input[data-provide="datepicker"] {
+    /* styling */
+    background-color: white;
+    border: thin solid blue;
+    border-radius: 4px;
+    display: inline-block;
+    font: inherit;
+    line-height: 1.5em;
+    padding: 0.5em 3.5em 0.5em 1em;
+    /* reset */
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+select.styled-select,
+input[data-provide="datepicker"] {
+    width: 100%;
+    background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+    background-size: 5px 5px, 5px 5px, 1px 1.5em;
+    background-repeat: no-repeat;
+    border-color: #F0E730;
+}
+
+select.styled-select {
+    background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+}
+
+input[data-provide="datepicker"] {
+    background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+}
+
+select.styled-select:focus {
+    background-image: linear-gradient(45deg, green 50%, transparent 50%), linear-gradient(135deg, transparent 50%, green 50%), linear-gradient(to right, #ccc, #ccc);
+    background-position: calc(100% - 15px) 1em, calc(100% - 20px) 1em, calc(100% - 2.5em) 0.5em;
+    background-size: 5px 5px, 5px 5px, 1px 1.5em;
+    background-repeat: no-repeat;
+    outline: 0;
+}
+
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+
+
+/*------------------------------------*\
+	Responsive
+\*------------------------------------*/
+
+@media only screen and (max-width: 991px) {}
+
+@media only screen and (max-width: 767px) {
+    .section-header h2.title {
+        font-size: 31.5px;
+    }
+    .main-btn,
+    .default-btn,
+    .outline-btn,
+    .white-btn {
+        padding: 8px 22px;
+        font-size: 14px;
+    }
+    .home-content h1 {
+        font-size: 36px;
+    }
+    .header-wrapper h2 {
+        margin-bottom: 20px;
+        text-align: center;
+        display: block;
+    }
+    .header-wrapper .breadcrumb {
+        float: none;
+        text-align: center;
+    }
+}
+
+.mb {
+    margin-bottom: 10px;
+}
+
+.mt {
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 480px) {
+    .contact-form .input:nth-child(2) {
+        margin-left: 0px;
+    }
+    .reply-form form .input,
+    .reply-form form .input {
+        width: 100%;
+    }
+    .reply-form form .input:nth-child(2) {
+        margin-left: 0px;
+    }
+}
