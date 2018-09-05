@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild,ElementRef,AfterViewInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 @Component({
@@ -2678,68 +2678,123 @@ export class FormRegisterComponent implements OnInit {
             this.err_name = '';
         }
     }
-    error_capture=()=>{
+    error_lm()
+    {
         
         if (this.registro.value.lastnameM == "") {
             this.err_am = 'Debe ingresar un apellido materno';
-            this.status=false;
         }
-        if (this.registro.value.email=="") {
-            this.err_em = 'Debe ingresar tu email';
-            this.status=false;
+        else
+        {
+            this.err_am = '';
         }
+    }
+    error_lp()
+    {
         if (this.registro.value.lastnameP == "") {
             this.err_ap = 'Debe ingresar un apellido Paterno';
-            this.status=false;
         }
-        if (this.registro.value.phone.length < 10) {
+        else{
+            this.err_ap = '';
+
+        }
+    }
+    error_email()
+    {
+        if (this.registro.value.email=="" ||  !/[@ | com]{1}/.test(this.registro.value.email) ) {
+            this.err_em = 'Debe ingresar un email valido';
+        }
+        else{
+            this.err_em = '';
+        }
+    }
+    error_phone()
+    {
+        if (this.registro.value.phone<1000000000 || this.registro.value.phone.length=="") {
             this.err_phone = 'Tu numero telefonico debe tener 10 digitos';
-            this.status=false;
         }
+        else
+        {
+            this.err_phone = '';
+        }
+    }
+    error_sh()
+    {
         if(this.registro.value.school=='')
         {
             this.err_ins='Debe ingresar su instituto';
-            this.status=false;
+        }else
+        {
+            this.err_ins='';
         }
+    }
+    error_age()
+    {
         if(this.registro.value.age=="")
         {
             this.err_age='Debe seleccionar su edad';
-            this.status=false;
         }
+        else{
+            this.err_age='';
+        }
+    }
+    error_ge()
+    {
         if(this.registro.value.genere=="")
         {
             this.err_g='Debe seleccionar su genero';
-            this.status=false;
         }
+        else
+        {
+            this.err_g='';
+        }
+    }
+    error_tsi()
+    {
         if(this.registro.value.tshirt_size=="")
         {
             this.err_tsize='Debe seleccionar su talla';
-            this.status=false;
         }
+        else{
+            this.err_tsize='';
+        }
+    }
+    error_st()
+    {
         if(this.registro.value.state=="")
         {
             this.err_st='Debe seleccionar su estado\n';
-            this.status=false;
         }
+        else{
+            this.err_st='';
+        }
+    }
+    error_ct()
+    {
         if(this.registro.value.city=="")
         {
             this.err_ci='Debe seleccionar su ciudad';
-            this.status=false;
         }
+        else{
+            this.err_ci='';
+        }
+    }
+    @ViewChild('sendBtn') inputEl:ElementRef;
+    error_capture=()=>{        
         if(this.registro.valid)
         {
-            this.err_name="Presiona enviar";
-            this.err_am="Presiona enviar";
-            this.err_ap="Presiona enviar";
-            this.err_phone="Presiona enviar";
-            this.err_ins="Presiona enviar";
-            this.err_age="Presiona enviar";
-            this.err_g="Presiona enviar";
-            this.err_tsize="Presiona enviar";
-            this.err_st="Presiona enviar";
-            this.err_ci="Presiona enviar";
+            this.err_name="Presiona enviar 010101010!!!";
+            this.err_am="Presiona enviar 010101010!!!";
+            this.err_ap="Presiona enviar 010101010!!!";
+            this.err_phone="Presiona enviar 010101010!!!";
+            this.err_ins="Presiona enviar 010101010!!!";
+            this.err_age="Presiona enviar 010101010!!!";
+            this.err_g="Presiona enviar 010101010!!!";
+            this.err_tsize="Presiona enviar 010101010!!!";
+            this.err_st="Presiona enviar 010101010!!!";
+            this.err_ci="Presiona enviar 010101010!!!";
             setTimeout(() => {
-                this.err_name="Presiona enviar";
+            this.err_name="";
             this.err_am="";
             this.err_ap="";
             this.err_phone="";
@@ -2750,6 +2805,7 @@ export class FormRegisterComponent implements OnInit {
             this.err_st="";
             this.err_ci="";
             }, 1500);
+            this.inputEl.nativeElement.focus();
         }   
 }
 
