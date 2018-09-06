@@ -7,25 +7,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     styleUrls: ['./form-register.component.css']
 })
 export class FormRegisterComponent implements OnInit {
-    //Resgistro almacena la informacion de todo el formulario
-    registro:FormGroup;
-    constructor(private fb:FormBuilder) {
-        this.registro=this.fb.group({
-            //validaciones campo - tipo de validacion
-            name:['',Validators.required],
-            lastnameM:['',Validators.required],
-            lastnameP:['',Validators.required],
-            email:['',Validators.email],
-            phone:['',Validators.required],
-            school:['',Validators.required],
-            age:['',Validators.required],
-            genere:['',Validators.required],
-            tshirt_size:['',Validators.required],
-            state:['',Validators.required],
-            city:['',Validators.required]
-        });
-
-    }
     // JSON con todos los estados y municipios de mexico
     states: any = [
         {
@@ -2654,6 +2635,9 @@ export class FormRegisterComponent implements OnInit {
         { value: 'M', label: 'Masculino' },
         { value: 'F', label: 'Femenino' }
     ];
+    //referencias a las vistas enviar y al form
+    @ViewChild('sendBtn') inputEl:ElementRef;
+    @ViewChild('FormView') View:ElementRef;
 
     //CurrentState Identifica el estado actual para luego determinar que municipios mostrar
     CurrentState: number = 0;
@@ -2666,9 +2650,11 @@ export class FormRegisterComponent implements OnInit {
         this.cities=this.states[event.target.selectedIndex].municipios;
     }
 
-    //muestra los errores
+    //variables de errores
     status:boolean=true;
     err_name;err_am;err_ap;err_em;err_phone;err_ins;err_age;err_g;err_tsize;err_st;err_ci;
+
+    //funciones de validacion por cacmpos
     error_name(){
         if (this.registro.value.name == "") {
             this.err_name = 'Debe ingresar un nombre';
@@ -2779,7 +2765,7 @@ export class FormRegisterComponent implements OnInit {
             this.err_ci='';
         }
     }
-    @ViewChild('sendBtn') inputEl:ElementRef;
+    //verifica si todos los campos son validos y hace focus a el boton enviar
     error_capture=()=>{        
         if(this.registro.valid)
         {
@@ -2820,9 +2806,36 @@ export class FormRegisterComponent implements OnInit {
         return num;
 
     }
+
+    //reset campos
+    reset()
+    {
+        this.View.nativeElement.reset();
+    }
+    //simulacion de guardado de datos
     save()
     {
         alert('guardado');
+        console.warn(this.registro.value);
+    }
+
+    //Resgistro almacena la informacion de todo el formulario
+    registro:FormGroup;
+    constructor(private fb:FormBuilder) {
+        this.registro=this.fb.group({
+            //validaciones campo - tipo de validacion
+            name:['',Validators.required],
+            lastnameM:['',Validators.required],
+            lastnameP:['',Validators.required],
+            email:['',Validators.email],
+            phone:['',Validators.required],
+            school:['',Validators.required],
+            age:['',Validators.required],
+            genere:['',Validators.required],
+            tshirt_size:['',Validators.required],
+            state:['',Validators.required],
+            city:['',Validators.required]
+        });
     }
     ngOnInit()
     {

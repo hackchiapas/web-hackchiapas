@@ -3,71 +3,85 @@
     <div class="submit-control">
         <img class="logo-alt" src="https://hackchiapas.com/assets/images/hackchiapas.svg" alt="logo">
         <button type="submit" #sendBtn class="btn outline-btn" [disabled]="!registro.valid" (click)="save()">Enviar</button>
+        <button type="submit" class="btn outline-btn" (click)="reset()">Borrar</button>
     </div>
-    <form [formGroup]="registro" (keydown)="error_capture()" class="container-fluid">
-        <div class="form-group" id="info">
-            <label for="">Formulario de Registro</label>
-        </div>
-        <div class="form-group">
-            <label for="name">Nombre</label>
-            <input type="text" class="form-control" (keyup)="error_name()" id="name" formControlName="name" placeholder="Ingresa tu Nombre" required>
-            <small id="error_name">{{err_name}}</small>
-        </div>
-        <div class="form-group">
-            <label for="lastnameM">Apellido Materno</label>
-            <input type="text" class="form-control" id="lastnameM" (keyup)="error_lm()" formControlName="lastnameM" placeholder="Ingresa tu Materno" required>
-            <small id="error_lM">{{err_am}}</small>
-        </div>
-        <div class="form-group">
-            <label for="lastnameP">Apellido Paterno</label>
-            <input type="text" class="form-control" id="lastnameP" (keyup)="error_lp()" formControlName="lastnameP" placeholder="Ingresa tu Paterno" required>
-            <small id="error_lP">{{err_ap}}</small>
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" (keyup)="error_email()" formControlName="email" aria-describedby="emailHelp" placeholder="Ingresa tu email" required>
-            <small id="error_email">{{err_em}}</small>
-        </div>
-        <div class="form-group">
-            <label for="phone">Telefono</label>
-            <input type="number" min="0" class="form-control" (keyup)="error_phone()" formControlName="phone" id="phone" placeholder="Ingresa tu telefono" required>
-            <small id="error_phone">{{err_phone}}</small>
-        </div>
-        <div class="form-group">
-            <label for="school">Instituto</label>
-            <input type="text" class="form-control" (keyup)="error_sh()" formControlName="school" id="school" placeholder="Ingresa tu instituto" required>
-            <small id="error_school">{{err_ins}}</small>
-        </div>
-        <div class="form-group">
-            <label for="age">Edad</label>
-            <select class="form-control" (change)="error_age()" formControlName="age" name="age" id="genere" required>
-                <option *ngFor="let n of range(15,100)" [value]="n" >{{n}} </option>
-            </select>
-            <small id="error_age">{{err_age}}</small>
-        </div>
-        <div class="form-group">
-            <label for="genere">Genero</label>
-            <select class="form-control" name="genere" (change)="error_ge()" formControlName="genere" id="genere" required>
-                <option *ngFor="let gen of genere" [value]="gen.value" >{{gen.label}} </option>
-            </select>
-            <small id="error_genere">{{err_g}}</small>
-        </div>
-        <div class="form-group">
-            <label for="tshirt_size">Talla de playera</label>
-            <select class="form-control" name="tshirt_size" (change)="error_tsi()" formControlName="tshirt_size" id="tshirt_size" required>
-                <option *ngFor="let size of tshirt_sizes" [value]="size.value" >{{size.label}} </option>
-            </select>
-            <small id="error_tshirt_size">{{err_tsize}}</small>
-        </div>
-        <div class="form-group" id="origin">
-            <label for="city">Procedencia</label>
-            <select class="form-control" formControlName="state" (change)="error_st()" name="state" id="state" (change)="setState($event)" required>
-                <option *ngFor="let state of states" [value]="state.name">{{state.name}}</option>
-            </select>
-            <select class="form-control" formControlName="city" (change)="error_ct()" name="city" id="city" required>
-                <option *ngFor=" let city of cities" [value]="city.name">{{city.name}}</option>
-            </select>
-            <small id="error_origin">{{err_st}}<br>{{err_ci}}</small>
+    <form [formGroup]="registro" (change)="error_capture()" #FormView class="container-fluid">
+        <div class="row">
+            <div class="col-md">
+                <br>
+                <div class="form-group" id="info">
+                    <label for="">Formulario de Registro</label>
+                </div>
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" (keyup)="error_name()" id="name" formControlName="name" placeholder="Ingresa tu Nombre" required>
+                    <small id="error_name">{{err_name}}</small>
+                </div>
+                <div class="form-group">
+                    <label for="lastnameM">Apellido Materno</label>
+                    <input type="text" class="form-control" id="lastnameM" (keyup)="error_lm()" formControlName="lastnameM" placeholder="Ingresa tu Materno" required>
+                    <small id="error_lM">{{err_am}}</small>
+                </div>
+                <div class="form-group">
+                    <label for="lastnameP">Apellido Paterno</label>
+                    <input type="text" class="form-control" id="lastnameP" (keyup)="error_lp()" formControlName="lastnameP" placeholder="Ingresa tu Paterno" required>
+                    <small id="error_lP">{{err_ap}}</small>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" (keyup)="error_email()" formControlName="email" aria-describedby="emailHelp" placeholder="Ingresa tu email" required>
+                    <small id="error_email">{{err_em}}</small>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefono</label>
+                    <input type="number" min="0" class="form-control" (keyup)="error_phone()" formControlName="phone" id="phone" placeholder="Ingresa tu telefono" required>
+                    <small id="error_phone">{{err_phone}}</small>
+                </div>
+            </div>
+            <div class="col-md">
+                <br><br><br>
+                <div class="form-group">
+                    <label for="school">Instituto</label>
+                    <input type="text" class="form-control" (keyup)="error_sh()" formControlName="school" id="school" placeholder="Ingresa tu instituto" required>
+                    <small id="error_school">{{err_ins}}</small>
+                </div>
+                <div class="form-group">
+                    <label for="age">Edad</label>
+                    <select class="form-control" (change)="error_age()" formControlName="age" name="age" id="genere" required>
+                        <option value="default" selected>Seleccione su edad</option>
+                        <option *ngFor="let n of range(15,100)" [value]="n" >{{n}} </option>
+                    </select>
+                    <small id="error_age">{{err_age}}</small>
+                </div>
+                <div class="form-group">
+                    <label for="genere">Genero</label>
+                    <select class="form-control" name="genere" (change)="error_ge()" formControlName="genere" id="genere" required>
+                        <option value="default" selected>Seleccione su genero</option>
+                        <option *ngFor="let gen of genere" [value]="gen.value" >{{gen.label}} </option>
+                    </select>
+                    <small id="error_genere">{{err_g}}</small>
+                </div>
+                <div class="form-group">
+                    <label for="tshirt_size">Talla de playera</label>
+                    <select class="form-control" name="tshirt_size" (change)="error_tsi()" formControlName="tshirt_size" id="tshirt_size" required>
+                        <option value="default" selected>Seleccione el tamaño de playera</option>
+                        <option *ngFor="let size of tshirt_sizes" [value]="size.value" >{{size.label}} </option>
+                    </select>
+                    <small id="error_tshirt_size">{{err_tsize}}</small>
+                </div>
+                <div class="form-group" id="origin">
+                    <label for="city">Procedencia</label>
+                    <select class="form-control" formControlName="state" (change)="error_st()" name="state" id="state" (change)="setState($event)" required>
+                        <option value="default" selected>Seleccione su estado</option>
+                        <option *ngFor="let state of states" [value]="state.name">{{state.name}}</option>
+                    </select>
+                    <select class="form-control" formControlName="city" (change)="error_ct()" name="city" id="city" required>
+                        <option value="default" selected>Seleccione su ciudad</option>
+                        <option *ngFor=" let city of cities" [value]="city.name">{{city.name}}</option>
+                    </select>
+                    <small id="error_origin">{{err_st}}<br>{{err_ci}}</small>
+                </div>
+            </div>
         </div>
         <br>
         <br>
